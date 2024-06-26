@@ -57,9 +57,9 @@ function createNumber() {
 createNumber();
 
 function createOperator() {
-  const operationArr = ["add", "subtract", "multiply", "divide"];
-  const operationSignArr = ["+", "-", "*", "/"];
-  for (let i = 0; i < 4; i++) {
+  const operationArr = ["add", "subtract", "multiply", "divide", "equal"];
+  const operationSignArr = ["+", "-", "*", "/", "="];
+  for (let i = 0; i < 5; i++) {
     const operation = document.createElement("button");
     operation.classList.add(operationArr[i]);
     operation.textContent = `${operationSignArr[i]}`;
@@ -68,16 +68,55 @@ function createOperator() {
 }
 createOperator();
 
+const display = document.querySelector(".display");
+
+const zeroBtn = document.querySelector(".zero");
+const oneBtn = document.querySelector(".one");
+const twoBtn = document.querySelector(".two");
+const threeBtn = document.querySelector(".three");
+const fourBtn = document.querySelector(".four");
+const fiveBtn = document.querySelector(".five");
+const sixBtn = document.querySelector(".six");
+const sevenBtn = document.querySelector(".seven");
+const eightBtn = document.querySelector(".eight");
+const nineBtn = document.querySelector(".nine");
 const addBtn = document.querySelector(".add");
 const subtractBtn = document.querySelector(".subtract");
 const multiplyBtn = document.querySelector(".multiply");
 const divideBtn = document.querySelector(".divide");
-const operationBtns = [addBtn, subtractBtn, multiplyBtn, divideBtn];
+const equalBtn = document.querySelector(".equal");
 
-const display = document.querySelector(".display");
+const buttonOptions = [
+  zeroBtn,
+  oneBtn,
+  twoBtn,
+  threeBtn,
+  fourBtn,
+  fiveBtn,
+  sixBtn,
+  sevenBtn,
+  eightBtn,
+  nineBtn,
+  addBtn,
+  subtractBtn,
+  multiplyBtn,
+  divideBtn,
+];
 
-operationBtns.forEach((btn) => {
+buttonOptions.forEach((btn) => {
   btn.addEventListener("click", () => {
     display.textContent += btn.innerText;
   });
+});
+
+equalBtn.addEventListener("click", () => {
+  if (display.textContent.includes("+")) {
+    console.log(add(1, 3));
+  } else if (display.textContent.includes("-")) {
+    console.log(subtract(1, 3));
+  } else if (display.textContent.includes("*")) {
+    console.log(multiply(1, 3));
+  } else if (display.textContent.includes("/")) {
+    console.log(divide(1, 3));
+  }
 });
